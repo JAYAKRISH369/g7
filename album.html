@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en" id="htm">
+<head >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+          overflow-x:hidden;
+        }
+        html{
+            color-scheme: dark light;
+        }
+.alb-pop-container{
+background: linear-gradient(#ff5acd,#9a1966,#c123b7);
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  background: linear-gradient(45deg,#1195a4,#ff5acd);
+  border-top: 1px solid #ccc;
+  box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+  transition: bottom 0.5s ease-in-out;
+}
+.alb-pop-content{
+  padding: 20px;
+  text-align: center;
+}
+.alb-poph1{
+  font-weight: 800;
+}
+.alb-button{
+  background-color: #8d15e8;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  border: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+.alb-button:hover{
+background-color: #0056b3;
+}
+.alb-pop-container .active{
+bottom: 0;
+}
+
+        .title-album{
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          justify-content: center;
+          align-items: center;
+          background:url("g7images/bg1-album.jpg") ;
+  background-size: cover;
+  z-index: -1;
+        }
+      .root-wrapper{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            flex-direction: row;
+            width: 800px;
+            height: 700px;
+            transform: translateY(70px);
+            /* background: url("g7images/frame13.png");
+            background-size: cover; */
+                 
+        }
+        /* .root-wrapper .bg{
+          z-index: -1;
+          position: absolute;
+          object-fit: cover;
+          width: 700px;
+          height: 700px;
+        } */
+        .img-grid{
+           margin-top: 5em;
+            width: auto;
+            height: auto;
+            position: absolute;
+            display: grid;
+            gap: 10px;
+            border-radius: 10px;
+            background: linear-gradient(45deg,#fbda61,#ff5acd);
+            grid-template-columns:  auto auto auto;
+            grid-template-rows: auto auto auto;
+            transform: translate(10px,-40px);
+        }
+        .img-grid img{
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .img-grid .main{
+          grid-row-start: 2;
+          grid-row-end: 3;
+          grid-column-start: 2;
+          grid-column-end:3;
+        }
+        .img-grid .bill{
+          grid-row-start: 1;
+          grid-row-end: 2;
+          grid-column-start: 1;
+          grid-column-end:2;
+        }
+        .img-grid .akki{
+          grid-row-start: 1;
+          grid-row-end: 2;
+          grid-column-start: 2;
+          grid-column-end:3;
+        }
+        .img-grid .rc{
+          grid-row-start: 2;
+          grid-row-end: 3;
+          grid-column-start: 3;
+          grid-column-end:4;
+        }
+        .img-grid .gani{
+          grid-row-start: 2;
+          grid-row-end: 3;
+          grid-column-start: 1;
+          grid-column-end:2;
+        }
+        .img-grid .cham{
+          grid-row-start: 3;
+          grid-row-end: 4;
+          grid-column-start: 2;
+          grid-column-end:3;
+        }
+        .img-grid .love{
+          grid-row-start: 3;
+          grid-row-end: 4;
+          grid-column-start: 3;
+          grid-column-end:4;
+        }
+        .circle{
+          border-radius: 50%;
+        }
+        .square{
+          border-radius: 0;
+        }
+        /* .album-sec1{
+          height: 100vw;
+          width: 100vh;
+          display: grid;
+          grid-template-columns: auto auto auto;
+          grid-template-rows: auto auto auto;
+          position: relative;
+          padding: 15px;
+
+        } */
+       /* .frame1{
+        width: 600px;
+        height: 400px;
+        background: url('g7images/frame14.png');
+        background-size:cover;
+       margin-left: 5px;
+       display: flex;
+       justify-content: center;
+       position: relative;
+       grid-column-start: 1;
+       grid-column-end: 4;
+        
+       } */
+      /* .frame1 img{
+        position: absolute;
+        object-fit: cover;
+      
+      } */
+      .album-sec{
+        display: flex;
+        justify-content: center;
+      }
+      .frame{
+        width: 620px;
+        height: 420px;
+        background: url('g7images/frame14.png');
+        position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      }
+      .frame img{
+        position: absolute;
+        width: 470px;
+        height: 70%;
+        object-fit: cover;
+        transform: translate(15px,0);
+      }
+      audio{
+        display: none;
+      }
+      .hr-line{
+        margin: 2%;
+        display: flex;
+        justify-content:center;
+      }
+      .hr-dotted{
+        border-style: dotted none none;
+    border-color: rgb(234, 26, 199);
+    border-width: 10px; 
+    width: 10%;
+      }
+      .hori{
+        border:none;
+  height: 20px;
+ 	width: 90%;
+	height: 50px;
+	margin-top: 0;
+	border-bottom: 1px solid rgb(234, 26, 199);
+	box-shadow: 0 20px 20px -20px #ae0bdf;
+  margin: -30px auto 50px; 
+      }
+      .container{
+        margin: 2%;
+      }
+      .sec-name-div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2%;
+      }
+     .container .box {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+     }
+     .container .box .column{
+      display: flex;
+      flex-direction: column;
+      width:32.5%
+     }
+     .container .box .column img{
+      width: 100%;
+      padding-bottom: 15px;
+      border-radius: 5px;
+     } 
+     
+     .list-div{
+      position: absolute;
+      inset: 0 0  0 70% ;
+      background: hsl(0,0%,100%, 0.1);
+      backdrop-filter: blur(1rem);
+      transform: translatex(0%);
+      z-index: 1000;
+     }
+     .list-div[data-visible="true"]{
+      transform: translatex(0%);
+     }
+     .list-album{
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 5rem;
+      padding: 4rem ;
+      gap: 30px;
+      z-index: 1000;
+     }
+     .list-album li {
+     font-weight: 600;
+     }
+     /* .list-div img{
+      position: absolute;
+      right: 30px;
+      z-index: 9999;
+     } */
+     .toggle{
+      background-color: white;
+      background: url('g7images/icons/menu.png');
+      position: absolute;
+      background-repeat: no-repeat;
+      top: 2rem;
+      right: 5rem;
+      width: 3rem;
+      aspect-ratio: 1;
+      border: 0;
+      z-index: 9999;
+     }
+
+    /* .list-album li{
+      cursor: hand;
+      cursor: pointer !important;
+     } */
+    
+    </style>
+</head>
+<body>
+  <div class="alb-pop-container">
+    <div class="alb-pop-content">
+      <h1 class="alb-poph1">click on the page to play song....,<br>
+         click on the images and place cursor inside image to play song...
+      </h1>
+      <button class="alb-button">close</button>
+    </div>
+  </div>
+
+
+  <audio id="myAudio" controls autoplay>
+    <source src="" type="audio/mpeg">
+</audio>
+
+<div class="title-album">
+  <button class="toggle" aria-controls="list-div" aria-expanded="false">menu</button>
+  <div  data-visible="false" class="list-div">
+    <ul class="list-album">
+      <a href=""><li id="li1" class="item">FIRST SEM- wibes</li></a>
+      <li id="li2" class="item">ANNUAL DAY- AWESOME MOMENTS</li>
+      <li id="li3" class="item">DECEMBER 31TH- hangout</li>
+      <li id="li4" class="item">DECEMBER 31TH- hangout</li>
+      <li id="li5" class="item">class room things</li>
+      <li id="li6" class="item">TECH-MARTHON</li>
+      <li id="li7" class="item">FIRST-G7 GROUP MEET</li>
+      <li id="li8" class="item">FEW CRAZY moments</li>
+    </ul>
+  </div>
+ <div class=" ">
+  <h1>ALBUM OF G7</h1></div>
+   <div class="root-wrapper"> 
+    <div class="img-grid"> 
+      <img src="g7images/dileep.jpg" alt="dileep-img" class="bill">
+      <img src="g7images/akki2.jpg" alt="akki-img" class="akki" >
+      <img src="g7images/ram.jpg" alt="ram-img" class="rc first">
+      <img src="g7images/jaya.jpg" alt="krish-img" class="main">
+      <img src="g7images/ganesh.jpg" alt="ganesh-img" class="gani first2">
+      <img src="g7images/laya.jpg" alt="laya-img" class="love">
+      <img src="g7images/cham.jpg" alt="cham-img" class="cham">
+    </div>
+</div>
+</div>
+<div class="alb-wrap">
+<div class="hr-line"><hr class="hr-dotted"></div>
+<div class="album-sec">
+ <div class="frame">
+  <img src="g7images/group1.jpg" alt="">
+ </div> 
+</div>
+
+ <!-- <div class="album-sec1">
+<div class="frame1 ">
+  <img src="g7images/dileep.jpg" alt="dileep-img" id="img1">
+</div>
+<div class="frame1">
+  <img src="g7images/dileep.jpg" alt="dileep-img" class="">
+</div>
+<div class="frame1">
+  <img src="g7images/dileep.jpg" alt="dileep-img" class="">
+</div>
+</div> -->
+<hr class="hori">
+<div class="sec-name-div">
+  <img src="g7images/icons/enjoy.png" alt="icon">
+  <h2>FIRST SEM- wibes</h2>
+</div>
+<div class="container">
+  <!--first sem wibes-->
+  <div class="box">
+    <div class="column">
+      <img src="g7images/first/fi1.jpg" alt="1">
+      <img src="g7images/first/fi4.png" alt="4">
+      <img src="g7images/first/fi7.png" alt="7">
+      <img src="g7images/first/fi2.png" alt="2">
+      <img src="g7images/first/fi12.jpg" alt="2">
+      <img src="g7images/first/fi13.jpg" alt="2">
+      
+    </div>
+    <div class="column">
+      <img src="g7images/first/fi5.png" alt="5">
+      <img src="g7images/drawing-me.jpg" alt="5">
+      <img src="g7images/first/fi10.png" alt="10">
+      <img src="g7images/first/fi14.jpg" alt="2">
+    </div>
+    <div class="column">
+      <img src="g7images/first/fi3.png" alt="3">
+      <img src="g7images/first/fi6.png" alt="6">
+      <img src="g7images/first/fi9.png" alt="9">
+      <img src="g7images/first/fi8.png" alt="8">
+      <img src="g7images/first/fi15.jpg" alt="2">
+      <img src="g7images/first/fi11.jpg" alt="2">
+      <img src="g7images/first/fi16.jpg" alt="2">
+    </div>
+  </div>
+  <hr class="hori">
+  
+  <!--annual day images-->
+  <div class="sec-name-div">
+    <img src="g7images/icons/june.png" alt="icon">
+    <img src="g7images/icons/date.png" alt="">
+    <h2>ANNUAL DAY- AWESOME MOMENTS</h2>
+  </div>
+
+  <div class="box">
+    <div class="column">
+      <img src="g7images/annual1.jpg" alt="">
+      <img src="g7images/annual4.jpg" alt="">
+    </div>
+    <div class="column">
+      <img src="g7images/annual2.jpg" alt="">
+      <img src="g7images/annual5.jpg" alt="">
+      <img src="g7images/annual8.jpg" alt="">
+      <img src="g7images/annual9.jpg" alt="">
+    </div>
+    <div class="column">
+      <img src="g7images/annual3.jpg" alt="">
+      <img src="g7images/annual6.jpg" alt="">
+      <img src="g7images/annual7.jpg" alt="">
+    </div>
+  </div>
+<!--december 31 images-->
+  <hr class="hori">
+
+  <div class="sec-name-div">
+    <img src="" alt="icon">
+    <img src="" alt="">
+    <h2>DECEMBER 31TH- hangout</h2>
+  </div>
+  <div class="box">
+    <div class="column">
+      <img src="g7images/dec1.jpg" alt="">
+      <img src="g7images/dec3.jpg" alt="">
+    </div>
+    <div class="column">
+      
+      <img src="g7images/dec2.jpeg" alt="">
+      
+    </div>
+    <div class="column">
+      <img src="g7images/dec4.jpg" alt="">
+      <img src="g7images/dec5.jpg" alt="">
+    </div>
+  </div>
+  <hr class="hori">
+  <div class="sec-name-div">
+    <img src="" alt="icon">
+    <img src="" alt="">
+    <h2>class room things</h2>
+  </div>
+<!--class room images-->
+  <div class="box">
+    <div class="column">
+      <img src="g7images/class1.jpeg" alt="">
+    </div>
+    <div class="column">
+      <img src="g7images/class3.jpg" alt="">
+    </div>
+    <div class="column">
+      <img src="g7images/class2.jpg" alt="">
+    
+    </div>
+  </div>
+  <hr class="hori">
+  <div class="sec-name-div">
+    <img src="" alt="icon">
+    <img src="" alt="">
+    <h2>TECH-MARTHON <PRE>THONDER BOLT-- ROYAL_GEEKS</PRE></h2>
+  </div>
+<!--tech marathon images-->
+  <div class="box">
+    <div class="column">
+      <img src="g7images/tech17.png" alt="">
+      <img src="g7images/tech1.jpg" alt="">
+      <img src="g7images/tech4.jpg" alt="">
+      <img src="g7images/tech7.jpg" alt="">
+      <img src="g7images/tech13.jpg" alt="">
+      <img src="g7images/tech10.jpg" alt="">
+      <img src="g7images/tech9.jpg" alt="">
+    </div>
+    <div class="column">
+      <img src="g7images/tech14.jpeg" alt="">
+      <img src="g7images/tech3.jpg" alt="">
+      <img src="g7images/tech15.jpg" alt="">
+      <img src="g7images/tech-gif.gif" alt="">
+      <img src="g7images/tech16.jpg" alt="">
+    </div>
+    <div class="column">
+      <img src="g7images/tech18.png" alt="">
+      <img src="g7images/tech2.jpg" alt="">
+      <img src="g7images/tech5.jpg" alt="">
+      <img src="g7images/tech6.jpg" alt="">
+      <img src="g7images/tech12.jpg" alt="">
+      <img src="g7images/tech11.jpg" alt="">
+      <img src="g7images/tech8.jpg" alt="">
+    </div>
+  </div>
+  <hr class="hori">
+  <div class="sec-name-div first-sec">
+    <img src="" alt="icon">
+    <img src="" alt="">
+    <h2>FIRST-G7<PRE>GROUP MEET</PRE></h2>
+  </div>
+  <!--group meet images-->
+  <div class="box first-sec">
+    <div class="column">
+      <img src="g7images/group.jpg" alt="">
+      <img src="g7images/group1.jpg" alt="">
+      <img src="g7images/group8.jpg" alt="">
+    </div>
+    <div class="column">
+      
+      <img src="g7images/group3.jpg" alt="">
+      <img src="g7images/group6.jpg" alt="">
+      
+    </div>
+    <div class="column">
+      <img src="g7images/group4.jpg" alt="">
+      <img src="g7images/group5.jpg" alt="">
+      <img src="g7images/group7.jpg" alt="">
+    </div>
+  </div>
+  <hr class="hori">
+  <div class="sec-name-div">
+    <img src="" alt="icon">
+    <img src="" alt="">
+    <h2>FEW CRAZY<PRE>moments</PRE></h2>
+  </div>
+  <!--few moments images-->
+  <div class="box">
+    <div class="column">
+      <img src="g7images/crazy1.jpg" alt="">
+      <img src="g7images/crazy4.jpg" alt="">
+      <img src="g7images/crazy8.jpg" alt="">
+      <img src="g7images/crazy11.jpg" alt="">
+      <img src="g7images/crazy13.jpg" alt="">
+      <img src="g7images/crazy14.jpg" alt="">
+      <img src="g7images/crazy17.jpg" alt="">
+      <img src="g7images/crazy20.jpg" alt="">
+      <img src="g7images/crazy23.jpg" alt="">
+      <img src="g7images/crazy26.jpg" alt="">
+      <img src="g7images/crazy29.jpg" alt="">
+      
+    </div>
+    <div class="column">
+      <img src="g7images/5monks.jpg" alt="">
+      <img src="g7images/crazy2.jpg" alt="">
+      <img src="g7images/crazy6.jpg" alt="">
+      <img src="g7images/crazy9.jpg" alt="">
+      <img src="g7images/crazy12.jpg" alt="">
+      <img src="g7images/crazy18.jpg" alt="">
+      <img src="g7images/crazy21.jpg" alt="">
+      <img src="g7images/crazy24.jpg" alt="">
+      <img src="g7images/crazy27.jpg" alt="">
+      <img src="g7images/crazy30.jpg" alt="">
+      
+    </div>
+    <div class="column">
+     <img src="g7images/crazy3.jpg" alt="">
+      <img src="g7images/crazy7.jpg" alt="">
+      <img src="g7images/crazy10.jpg" alt="">
+      <img src="g7images/crazy15.jpg" alt="">
+      <img src="g7images/crazy16.jpg" alt="">
+      <img src="g7images/crazy19.jpg" alt="">
+      <img src="g7images/crazy22.jpg" alt="">
+      <img src="g7images/crazy25.jpg" alt="">
+      <img src="g7images/crazy28.jpg" alt="">
+      <img src="g7images/crazy31.jpg" alt="">
+    </div>
+ 
+</div>
+</div>
+<script>
+
+// document.addEventListener("DOMContentLoaded",function(){
+// setTimeout(step1("first"),2000);
+// });
+// function step1(ele){
+//   var f=document.querySelector("."+ele);
+//   var f2=document.querySelector("."+ele+"2");
+//   console.log(f);
+//   console.log(f2);
+//   f.classList.add("circle");
+//   setTimeout(f2.classList.add("circle"),2000);
+//   f.style.gridRowStart="1";
+//   f.style.gridRowEnd="2";
+//   f.style.gridColumnStart="3";
+//   f.style.gridColumnStart="4";
+
+//   f2.style.gridRowStart="3";
+//   f2.style.gridRowEnd="4";
+//   f2.style.gridColumnStart="1";
+//   f2.style.gridColumnStart="2";
+// }
+
+
+
+// document.addEventListener("DOMContentLoaded", function () {
+// const popupContainer = document.querySelector(".alb-pop-container");
+// const closeBtn = document.querySelector(".alb-button");
+
+// function openPopup() {
+//   console.log("openpop");
+// popupContainer.classList.add("active");
+// }
+// function closePopup() {
+//   console.log("closepop");
+// popupContainer.classList.remove("active");
+// }
+// closeBtn.addEventListener("click", closePopup);
+// console.log("started");
+// setTimeout(openPopup, 1000);
+// });
+
+
+// var ele1=document.getElementsByClassName("title-album");
+// console.log(ele1);
+// var issongplaying=false;
+// var aud=new Audio("g7images/Friendship-Mashup.mp3");
+// ele1.addEventListener("mousedown",function(){
+//   document.getElementById("myAudio").src="g7images/Friendship-Mashup.mp3";
+//   console.log("mousedown");
+//   if(!issongplaying){
+//     console.log("song started");
+//   aud.play();
+//   issongplaying=true;
+//   aud.addEventListener('ended', function(){
+//       issongplaying = false;
+// });
+//   }
+// });
+
+// var ele = document.getElementById("img1");
+// var aud1=new Audio("g7images/Best Friendship.mp3");
+// ele.addEventListener("mousedown", function(){
+// aud1.play();
+// aud.pause();
+// });
+
+// ele.addEventListener('mouseleave', function(){ 
+// aud1.pause();
+// aud.play();
+// aud1.currentTime=0;
+// });
+
+for(var i=0;i<document.querySelectorAll("li").length;i++){
+  document.querySelectorAll(".item")[i].addEventListener("click",function(){
+  var eleid=this.id;
+  console.log(eleid);
+liscroll(eleid);
+  });
+}  
+function liscroll(eleid){
+ switch (eleid){
+  case "li1":
+     var first=document.querySelectorclass(".first-sec");
+     console.log(first);
+     first.scrollIntoView({behavior:'smooth'});
+ }
+}
+
+const navdiv=document.querySelector(".list-div");
+const navtoggle=document.querySelector(".toggle");
+console.log(navdiv);
+console.log(navtoggle);
+navtoggle.addEventListener("click",function(){
+  const visibility=navdiv.getAttribute("data-visible");
+  console.log(visibility);
+});
+</script>
+</body>
+</html>

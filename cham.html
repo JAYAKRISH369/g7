@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chamundeshwari(cham)</title>
+    <style>
+          *,*::before,*::after{
+    box-sizing: border-box;
+   }
+  
+   html{
+    color-scheme: dark light;
+   }
+   body{
+    background: var(--body-bg);
+    color: white;
+    font-family:system-ui ;
+    font-size: 1.25;
+    line-height: 1.5;
+    margin: 0;
+    
+   }
+   .indipage-wrapper{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+   grid-template-columns: auto auto;
+   grid-template-rows: auto ;
+    position: relative;
+    background: black;
+    overflow-x: hidden;
+   
+   }
+.image-div{
+    width: 400px;
+    height: 400px;
+    position: relative;
+    background-image: url('g7images/frame2.jpg');
+    background-size: cover;
+    border-radius: 50%;
+    inset: 5em;
+    animation: img-div 2s linear ;
+}
+.indi-text{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    
+}
+.indi-text h1{
+  animation: ind-h1 2s linear;
+}
+.indi-text img{
+  animation: ind-h1 3s linear ;
+}
+.indi-text h2{
+  animation: ind-h2 4s linear ;
+}
+
+@keyframes ind-h2 {
+    from{
+        transform: translate(50rem) rotateY(0deg);
+    }
+    to{
+        transform: translate(0) rotateY(360deg);
+    }
+}
+
+@keyframes ind-h1 {
+    from{
+        transform: translate(50rem);
+    }
+    to{
+        transform: translate(0);
+    }
+}
+
+
+@keyframes img-div {
+   from{
+    transform: translate(27rem,100px) rotate(0deg);
+   }
+   to{
+    transform: translate(0) rotate(360deg);
+   }
+
+    
+}
+.image-div img{
+position: absolute;
+width: 200px;
+height: 200px;
+object-fit: cover;
+border-radius: 50%;
+transform: translate(100px,100px);
+}
+.indi-text img{
+    width: 200px;
+    height: 200px;
+}
+.indi-content{
+    width: 100vw;
+    height:50vh;
+    background-image: url('g7images/compasion2.avif');
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.indi-content pre{
+    font-size: 2em;
+    font-weight: 900;
+}
+
+.indi-public{
+    width: auto;
+    height: 400px;
+    background:url('g7images/public-speaker.jpg') ;
+}
+.indi-public pre{
+  font-size: 2em;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute;
+  padding: 2em;
+  transform: translateY(5rem);
+}
+.beacon{
+    width: auto;
+    height: 500px;
+    position: relative;
+}
+.beacon img{
+    position: relative;
+    width: 100%;
+    object-fit: cover;
+}
+.beacon pre{
+  position: absolute;
+  transform: translate(11em,-15em);
+  font-size: xx-large;
+  font-weight: 800;
+}
+.leadership{
+   
+    width: 100%;
+    height: 400px;
+}
+.leadership img{
+    position: relative;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+.leadership pre{
+    font-size: xx-large;
+    font-weight: 900;
+    transform: translate(20em,-12em);
+    color: black;
+}
+    </style>
+</head>
+<body>
+    <div class="indipage-wrapper">
+    
+        <div class="image-div">
+  <img src="g7images/cham.jpg" alt="">
+    </div>
+<div class="indi-text">
+    
+    <h1>V.S.C.CHAITHANYA</h1>
+    <img src="g7images/fighter.jpg" alt="">
+    <h2> The Compassionate Crusader</h2>
+
+</div>
+</div>
+<div class="indi-content">
+    
+   <pre>        Champion, true to her name, 
+         champions the cause of 
+        compassion and service.</pre>
+</div>
+<div class="indi-public">
+   <pre>Her eloquence and public speaking skills 
+     breathe life into our ideas, 
+         making teamwork a seamless endeavor</pre> 
+    
+</div>
+<div class="beacon">
+    <img src="g7images/beacon.webp" alt="beacon">
+    <pre>        With a heart that beats for the less fortunate, 
+        she aspires to be a beacon of hope for the underprivileged.</pre>
+</div>
+<div class="leadership">
+    <img src="g7images/leadership.jpg" alt="leardership-image">
+    <pre>Champion's unwavering dedication to uplifting lives 
+        underscores the true essence of leadership.</pre>
+</div>
+</body>
+</html>
